@@ -68,6 +68,37 @@ dogfight = {
 		dogfight.bang_spans = bangs;
 		dogfight.pew_span = pew;
 	},
+
+	start: function() {
+		// it's really stupid how JavaScript doesn't have a synchronous delay
+		var i = 0;
+		var fight = function() {
+			var bangs = dogfight.bang_spans;
+			var pew = dogfight.pew_span;
+			bangs[i].innerHTML = dogfight.pew;
+
+			setTimeout(function(){
+				bangs[i].innerHTML = dogfight._;
+				pew.innerHTML = dogfight.pew;
+
+				setTimeout(function (){
+					// flip between 0 and 1
+					i = (i+1)%2;
+
+					pew.innerHTML = dogfight._;
+					bangs[i].innerHTML = dogfight.bang;
+
+					setTimeout(function (){
+						bangs[i].innerHTML = dogfight._;
+					}, dogfight.delay);
+				}, dogfight.delay);
+			}, dogfight.delay);
+		};
+
+		// kicking off the dogfight
+		fight();
+		setInterval(fight, 4*dogfight.delay);
+	},
 };
 
 
@@ -75,33 +106,7 @@ window.onload = function() {
 	// initialize content
 	dogfight.init();
 
-	// it's really stupid how JavaScript doesn't have a synchronous delay
-	var bangs = dogfight.bang_spans;
-	var pew = dogfight.pew_span;
-	var i = 0;
-	var fight = function() {
-		bangs[i].innerHTML = dogfight.pew;
-
-		setTimeout(function(){
-			bangs[i].innerHTML = dogfight._;
-			pew.innerHTML = dogfight.pew;
-
-			setTimeout(function (){
-				// flip between 0 and 1
-				i = (i+1)%2;
-
-				pew.innerHTML = dogfight._;
-				bangs[i].innerHTML = dogfight.bang;
-
-				setTimeout(function (){
-					bangs[i].innerHTML = dogfight._;
-				}, dogfight.delay);
-			}, dogfight.delay);
-		}, dogfight.delay);
-	};
-
-	// kicking off the dogfight
-	fight();
-	setInterval(fight, 4*dogfight.delay);
+	// release the dogs
+	dogfight.start();
 };
 
