@@ -5,19 +5,14 @@
  * claim fair use?
  */
 
-/**
- * @namespace
- */
 dogfight = {
 	// constants
-	delay: 500,
-
-	//TODO: use fancy unicode to make it look better
 	x_fighter: '&#5171;o&#5176;',		//  >o<
 	tie_fighter: '&#9500;o&#9508;',	// |-o-|
 	_: '&nbsp;',										//  ' ' (forced space)
 	bang: '&#8727;',								//   *
 	pew: '&mdash;',									//   -
+	delay: 275,
 
 	// functions
 	init: function() {
