@@ -3,6 +3,10 @@
  * @version v2.beta "Cleaning up"
  * @copyright Doug McGeehan 2016, but some of this stuff may be Disney's. I
  * claim fair use?
+ *
+ * @todo JSDoc annotations
+ * @todo Fighter object with fire_at method
+ * @todo HTML title update?
  */
 
 dogfight = {
