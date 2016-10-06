@@ -5,6 +5,14 @@
  * claim fair use?
  */
 
+/**
+ * @namespace
+ */
+dogfight = {
+	_: '&nbsp;',
+};
+
+
 window.onload = function() {
 	// initialize x-wing fighter
 	var xwing = document.createElement('span');
@@ -37,7 +45,7 @@ window.onload = function() {
 
 	var pew = document.createElement('span');
 	pew.setAttribute('id', 'pew');
-	pew.innerHTML = '&nbsp;'
+	pew.innerHTML = dogfight._;
 	div.appendChild(pew);
 
 	div.appendChild(tie);
@@ -45,7 +53,7 @@ window.onload = function() {
 	// set bangs and pews
 	var bangs = document.getElementsByName('bang');
 	bangs.forEach(function(e, i, q) {
-		e.innerHTML = '&nbsp;';
+		e.innerHTML = dogfight._;
 	});
 
 	// it's really stupid how JavaScript doesn't have a synchronous delay
@@ -55,18 +63,18 @@ window.onload = function() {
 		bangs[i].innerHTML = '-';
 
 		setTimeout(function(){
-			bangs[i].innerHTML = '&nbsp;';
+			bangs[i].innerHTML = dogfight._;
 			pew.innerHTML = '-';
 
 			setTimeout(function (){
 				// flip between 0 and 1
 				i = (i+1)%2;
 
-				pew.innerHTML = '&nbsp;';
+				pew.innerHTML = dogfight._;
 				bangs[i].innerHTML = '*';
 
 				setTimeout(function (){
-					bangs[i].innerHTML = '&nbsp;';
+					bangs[i].innerHTML = dogfight._;
 				}, delay);
 			}, delay);
 		}, delay);
@@ -76,5 +84,4 @@ window.onload = function() {
 	fight();
 	setInterval(fight, 4*delay);
 };
-
 
