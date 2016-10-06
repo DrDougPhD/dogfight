@@ -7,6 +7,17 @@
  * @todo JSDoc annotations
  * @todo Fighter object with fire_at method
  * @todo HTML title update?
+ * @todo destroyed TIE fighter:
+ *		>o< -*|-o-|
+ *		>o<*- |-o-|
+ *		>o< -*|-o-|
+ *		>o<   |-x-|
+ *		>o<
+ *		>o<   /-x-\
+ *		>o<
+ *		>o<   /-x-\
+ *		>o<
+ *		>o<    ...
  */
 
 dogfight = {
