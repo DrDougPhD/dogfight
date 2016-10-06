@@ -21,54 +21,59 @@ dogfight = {
 
 	// functions
 	init: function() {
+		// initialize x-wing fighter
+		var xwing = document.createElement('span');
+
+		var x_fighter = document.createElement('span');
+		x_fighter.setAttribute('name', 'fighter');
+		x_fighter.appendChild(document.createTextNode(dogfight.x_fighter));
+		xwing.appendChild(x_fighter);
+
+		var x_bang = document.createElement('span');
+		x_bang.setAttribute('name', 'bang');
+		xwing.appendChild(x_bang);
+
+
+		// initialize tie fighter, in reverse order
+		var tie = document.createElement('span');
+
+		var t_bang = document.createElement('span');
+		t_bang.setAttribute('name', 'bang');
+		tie.appendChild(t_bang);
+
+		var t_fighter = document.createElement('span');
+		t_fighter.setAttribute('name', 'fighter');
+		t_fighter.appendChild(document.createTextNode(dogfight.tie_fighter));
+		tie.appendChild(t_fighter);
+
+		// pew-line between the two
+		var pew = document.createElement('span');
+		pew.setAttribute('id', 'pew');
+
+		var bangs = [x_bang, t_fighter];
+
+		// add to the dom
+		var div = document.getElementById('inner');
+		div.appendChild(xwing);
+		div.appendChild(pew);
+		div.appendChild(tie);
+
+		// set bangs and pews
+		bangs.forEach(function(e, i, q) {
+			e.innerHTML = dogfight._;
+		});
+		pew.innerHTML = dogfight._;
+
+		// assign elements to namespace
+		dogfight.bang_spans = bangs;
+		dogfight.pew_span = pew;
 	},
 };
 
 
 window.onload = function() {
-	// initialize x-wing fighter
-	var xwing = document.createElement('span');
-
-	var x_fighter = document.createElement('span');
-	x_fighter.setAttribute('name', 'fighter');
-	x_fighter.appendChild(document.createTextNode(dogfight.x_fighter));
-	xwing.appendChild(x_fighter);
-
-	var x_bang = document.createElement('span');
-	x_bang.setAttribute('name', 'bang');
-	xwing.appendChild(x_bang);
-
-
-	// initialize tie fighter, in reverse order
-	var tie = document.createElement('span');
-
-	var t_bang = document.createElement('span');
-	t_bang.setAttribute('name', 'bang');
-	tie.appendChild(t_bang);
-
-	var t_fighter = document.createElement('span');
-	t_fighter.setAttribute('name', 'fighter');
-	t_fighter.appendChild(document.createTextNode(dogfight.tie_fighter));
-	tie.appendChild(t_fighter);
-
-	// pew-line between the two
-	var pew = document.createElement('span');
-	pew.setAttribute('id', 'pew');
-
-	var bangs = [x_bang, t_fighter];
-
-	// add to the dom
-	var div = document.getElementById('inner');
-	div.appendChild(xwing);
-	div.appendChild(pew);
-	div.appendChild(tie);
-
-	// set bangs and pews
-	bangs.forEach(function(e, i, q) {
-		e.innerHTML = dogfight._;
-	});
-	pew.innerHTML = dogfight._;
-
+	// initialize content
+	dogfight.init();
 
 	// it's really stupid how JavaScript doesn't have a synchronous delay
 	var bangs = dogfight.bang_spans;
