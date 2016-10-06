@@ -1,6 +1,6 @@
 /**
  * @author Doug McGeehan <djmvfb@mst.edu>
- * @version v1.alpha "Cowboy coding"
+ * @version v2.beta "Cleaning up"
  * @copyright Doug McGeehan 2016, but some of this stuff may be Disney's. I
  * claim fair use?
  */
@@ -9,7 +9,15 @@
  * @namespace
  */
 dogfight = {
+	// constants
 	_: '&nbsp;',
+	bang: '*',
+	pew: '-',
+
+	delay: 500,
+
+	x_fighter: '>o<',
+	tie_fighter: '|o|',
 };
 
 
@@ -19,7 +27,7 @@ window.onload = function() {
 
 	var x_fighter = document.createElement('span');
 	x_fighter.setAttribute('name', 'fighter');
-	x_fighter.appendChild(document.createTextNode('>o<'));
+	x_fighter.appendChild(document.createTextNode(dogfight.x_fighter));
 	xwing.appendChild(x_fighter);
 
 	var x_bang = document.createElement('span');
@@ -36,7 +44,7 @@ window.onload = function() {
 
 	var t_fighter = document.createElement('span');
 	t_fighter.setAttribute('name', 'fighter');
-	t_fighter.appendChild(document.createTextNode('|o|'));
+	t_fighter.appendChild(document.createTextNode(dogfight.tie_fighter));
 	tie.appendChild(t_fighter);
 
 	// add to the dom
@@ -58,30 +66,29 @@ window.onload = function() {
 
 	// it's really stupid how JavaScript doesn't have a synchronous delay
 	var i = 0;
-	var delay = 500;
 	var fight = function() {
-		bangs[i].innerHTML = '-';
+		bangs[i].innerHTML = dogfight.pew;
 
 		setTimeout(function(){
 			bangs[i].innerHTML = dogfight._;
-			pew.innerHTML = '-';
+			pew.innerHTML = dogfight.pew;
 
 			setTimeout(function (){
 				// flip between 0 and 1
 				i = (i+1)%2;
 
 				pew.innerHTML = dogfight._;
-				bangs[i].innerHTML = '*';
+				bangs[i].innerHTML = dogfight.bang;
 
 				setTimeout(function (){
 					bangs[i].innerHTML = dogfight._;
-				}, delay);
-			}, delay);
-		}, delay);
+				}, dogfight.delay);
+			}, dogfight.delay);
+		}, dogfight.delay);
 	};
 
 	// kicking off the dogfight
 	fight();
-	setInterval(fight, 4*delay);
+	setInterval(fight, 4*dogfight.delay);
 };
 
