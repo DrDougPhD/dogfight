@@ -13,11 +13,11 @@ dogfight = {
 	delay: 500,
 
 	//TODO: use fancy unicode to make it look better
-	x_fighter: '>o<',
+	x_fighter: '&#5171;o&#5176;',
 	tie_fighter: '|o|',
 	_: '&nbsp;',
-	bang: '*',
-	pew: '-',
+	bang: '&#8727;',
+	pew: '&mdash;',
 
 	// functions
 	init: function() {
@@ -25,7 +25,7 @@ dogfight = {
 		var xwing = document.createElement('span');
 
 		var x_fighter = document.createElement('span');
-		x_fighter.appendChild(document.createTextNode(dogfight.x_fighter));
+		x_fighter.innerHTML = dogfight.x_fighter;
 		xwing.appendChild(x_fighter);
 
 		var x_bang = document.createElement('span');
@@ -39,13 +39,12 @@ dogfight = {
 		tie.appendChild(t_bang);
 
 		var t_fighter = document.createElement('span');
-		t_fighter.appendChild(document.createTextNode(dogfight.tie_fighter));
+		t_fighter.innerHTML = dogfight.tie_fighter;
 		tie.appendChild(t_fighter);
 
 		// pew-line between the two
 		var pew = document.createElement('span');
-
-		var bangs = [x_bang, t_fighter];
+		var bangs = [x_bang, t_bang];
 
 		// add to the dom
 		var div = document.getElementById('inner');
