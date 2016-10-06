@@ -28,7 +28,7 @@ window.onload = function() {
 
 	var t_fighter = document.createElement('span');
 	t_fighter.setAttribute('name', 'fighter');
-	t_fighter.appendChild(document.createTextNode('|o|'));
+	t_fighter.appendChild(document.createTextNode('|-o-|'));
 	tie.appendChild(t_fighter);
 
 	// add to the dom
