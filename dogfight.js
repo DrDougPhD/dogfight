@@ -10,14 +10,18 @@
  */
 dogfight = {
 	// constants
+	delay: 500,
+
+	//TODO: use fancy unicode to make it look better
+	x_fighter: '>o<',
+	tie_fighter: '|o|',
 	_: '&nbsp;',
 	bang: '*',
 	pew: '-',
 
-	delay: 500,
-
-	x_fighter: '>o<',
-	tie_fighter: '|o|',
+	// functions
+	init: function() {
+	},
 };
 
 
@@ -47,24 +51,28 @@ window.onload = function() {
 	t_fighter.appendChild(document.createTextNode(dogfight.tie_fighter));
 	tie.appendChild(t_fighter);
 
+	// pew-line between the two
+	var pew = document.createElement('span');
+	pew.setAttribute('id', 'pew');
+
+	var bangs = [x_bang, t_fighter];
+
 	// add to the dom
 	var div = document.getElementById('inner');
 	div.appendChild(xwing);
-
-	var pew = document.createElement('span');
-	pew.setAttribute('id', 'pew');
-	pew.innerHTML = dogfight._;
 	div.appendChild(pew);
-
 	div.appendChild(tie);
 
 	// set bangs and pews
-	var bangs = document.getElementsByName('bang');
 	bangs.forEach(function(e, i, q) {
 		e.innerHTML = dogfight._;
 	});
+	pew.innerHTML = dogfight._;
+
 
 	// it's really stupid how JavaScript doesn't have a synchronous delay
+	var bangs = dogfight.bang_spans;
+	var pew = dogfight.pew_span;
 	var i = 0;
 	var fight = function() {
 		bangs[i].innerHTML = dogfight.pew;
